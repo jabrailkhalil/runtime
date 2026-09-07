@@ -1428,7 +1428,7 @@ namespace System.Reflection
             if (reader is null)
                 return false;
 
-            RuntimeType.ListBuilder<object> derivedAttributes = default;
+            ListBuilder<object> derivedAttributes = default;
             foreach (CustomAttributeHandle customAttributeHandle in customAttributeHandles)
             {
                 if (FilterCustomAttributeRecord(
@@ -1450,7 +1450,7 @@ namespace System.Reflection
             MetadataReader reader,
             RuntimeType attributeFilterType,
             bool mustBeInheritable,
-            ref RuntimeType.ListBuilder<object> derivedAttributes)
+            ref ListBuilder<object> derivedAttributes)
         {
             CustomAttribute customAttribute = customAttributeHandle.GetCustomAttribute(reader);
             Handle attributeTypeHandle = customAttribute.GetAttributeTypeHandle(reader);
@@ -1674,12 +1674,12 @@ namespace System.Reflection
             Justification = "Linker guarantees presence of all the constructor parameters, property setters and fields which are accessed by any " +
                             "attribute instantiation which is present in the code linker has analyzed.")]
         private static void AddCustomAttributes(
-            ref RuntimeType.ListBuilder<object> attributes,
+            ref ListBuilder<object> attributes,
             MetadataReader? reader,
             CustomAttributeHandleCollection customAttributeHandles,
             RuntimeType? attributeFilterType,
             bool mustBeInheritable,
-            RuntimeType.ListBuilder<object> derivedAttributes)
+            ListBuilder<object> derivedAttributes)
         {
             if (reader is null)
                 return;
